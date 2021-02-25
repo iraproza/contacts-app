@@ -26,7 +26,7 @@ const ContactList = ({List}) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {item}
+                                        {item}
                                     </tbody>
                                 </table> 
                             </div>
