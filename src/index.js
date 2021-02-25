@@ -8,7 +8,6 @@ import Search from "./components/Search/Search";
 import ContactList from "./components/ContactList/ContactList";
 import Footer from "./components/Footer/Footer";
 
-
 const App = () => {
   return(
     <Fragment>

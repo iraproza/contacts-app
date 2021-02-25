@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 
-import ContactItem from "../ContactItem/ContactItem";
+import ContactItem from "./ContactItem/ContactItem";
 
 const ContactList = () => {
     return(
@@ -10,5 +10,4 @@ const ContactList = () => {
         </Fragment>
     )
 }
-
 export default ContactList;
