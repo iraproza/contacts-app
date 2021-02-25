@@ -1,5 +1,7 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+
 body {
-  background: linear-gradient(135deg, rgba(203,207,184,1) 0%, rgba(132,157,143,1) 100%);
-  background-size: cover;
-  height: 100vh;
+
 }
