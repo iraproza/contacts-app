@@ -19,10 +19,10 @@ const ContactList = ({List}) => {
                                     <thead>
                                         <tr>
                                             <th><span>User</span></th>
-                                            <th><span>Created</span></th>
+                                            <th className="text-center"><span>Created</span></th>
                                             <th className="text-center"><span>Status</span></th>
-                                            <th><span>Email</span></th>
-                                            <th>&nbsp;</th>
+                                            <th className="text-center"><span>Email</span></th>
+                                            <th className="text-center">&nbsp;</th>
                                         </tr>
                                     </thead>
                                     <tbody>

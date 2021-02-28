@@ -8,16 +8,16 @@ const ContactItem = ({Avatar, Name, Created, Role, Status, Email }) => {
 				<a href="#" className="user-link">{Name}</a>
 				<span className="user-subhead">{Role}</span>
 			</td>
-            <td>
+            <td className="text-center">
                {Created}
             </td>
             <td className="text-center">
                 <span className="label label-default">{Status}</span>
             </td>
-            <td>
-                <a href="#">{Email}</a>
+            <td className="text-center">
+                <a className="email" href="#">{Email}</a>
             </td>
-            <td>
+            <td className="text-center">
                 <a href="#" className="table-link">
                     <span className="fa-stack">
                         <i className="fa fa-square fa-stack-2x"></i>

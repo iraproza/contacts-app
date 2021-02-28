@@ -32,7 +32,20 @@
 }
 
 .btn-search{
-    background-color: #aa664b;
-    border: #aa664b;
+    background-color: #9b4324;
+    border: #9b4324;
     margin-left: 15px;
+}
+
+.btn-search:hover,
+.btn-search:focus{
+    background-color: #9b442481!important;
+    border-color: #9b4324!important;
+    box-shadow: none!important;
+}
+
+.btn-search:active{
+    background-color: #9b4424be !important;
+    box-shadow: none!important;
+
 }

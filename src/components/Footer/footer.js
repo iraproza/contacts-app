@@ -10,9 +10,9 @@ const Footer = () => {
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-footer-widget section_padding_0_130">
                         <div class="footer-logo mb-3"></div>
-                        <p>Appland is completely creative, lightweight, clean app landing page.</p>
+                        <p>Contact List is completely creative, lightweight, clean app landing page.</p>
                         <div class="copywrite-text mb-5">
-                            <p class="mb-0">Made with <i class="lni-heart mr-1"></i>by<a class="ml-1" href="https://wrapbootstrap.com/user/DesigningWorld">Designing World</a></p>
+                            <p class="mb-0">Made with <i class="lni-heart mr-1"></i>by<a class="ml-1">Step</a></p>
                         </div>
                         <div class="footer_social_area"><a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a><a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest"><i class="fa fa-pinterest"></i></a><a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype"><i class="fa fa-skype"></i></a><a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></div>
                         </div>
@@ -23,8 +23,6 @@ const Footer = () => {
                         <div class="footer_menu">
                             <ul>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Corporate Sale</a></li>
-                            <li><a href="#">Terms &amp; Policy</a></li>
                             <li><a href="#">Community</a></li>
                             </ul>
                         </div>
@@ -37,9 +35,6 @@ const Footer = () => {
                             <ul>
                             <li><a href="#">Help</a></li>
                             <li><a href="#">Support</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Term &amp; Conditions</a></li>
-                            <li><a href="#">Help &amp; Support</a></li>
                             </ul>
                         </div>
                         </div>
@@ -49,10 +44,8 @@ const Footer = () => {
                         <h5 class="widget-title">Contact</h5>
                         <div class="footer_menu">
                             <ul>
-                            <li><a href="#">Call Centre</a></li>
                             <li><a href="#">Email Us</a></li>
-                            <li><a href="#">Term &amp; Conditions</a></li>
-                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Address</a></li>
                             </ul>
                         </div>
                         </div>

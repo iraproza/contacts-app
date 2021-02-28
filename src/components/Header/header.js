@@ -11,8 +11,11 @@ const Header = () =>{
                             <li className="nav-item">
                                 <a className="nav-link" href="#"><i className="fas fa-house-user home-icon"></i></a>
                             </li>
+                            <li className="nav-item logo nav-link">
+                                <i class="fas fa-mail-bulk"></i><i class="far fa-address-book"></i><i class="fas fa-paper-plane"></i><i class="fas fa-phone"></i><i class="fas fa-envelope-open-text"></i>
+                            </li>
                             <li class="nav-item">
-                                <a className="nav-link" href="#"><i className="fas fa-user-plus"></i></a>
+                                <a className="nav-link" href="#"><i className="fas fa-user-plus add-contact-icon"></i></a>
                             </li>
                         </ul>
                     </div>
