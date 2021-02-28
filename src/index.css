@@ -4,6 +4,7 @@
 
 body{
     margin-top:20px;
+	background-color: #49746e;
 }
 
 .user-list tbody td > img {
@@ -26,6 +27,7 @@ body{
 /* TABLES */
 .table {
     border-collapse: separate;
+	border-top: none;
 }
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {

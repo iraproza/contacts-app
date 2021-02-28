@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import "./header.css";
 
 const Header = () =>{
     return(
@@ -8,7 +9,7 @@ const Header = () =>{
                     <div className="col-12 ">
                         <ul className="nav nav-pills justify-content-between">
                             <li className="nav-item">
-                                <a className="nav-link" href="#"><i className="fas fa-house-user"></i></a>
+                                <a className="nav-link" href="#"><i className="fas fa-house-user home-icon"></i></a>
                             </li>
                             <li class="nav-item">
                                 <a className="nav-link" href="#"><i className="fas fa-user-plus"></i></a>
