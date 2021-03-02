@@ -1,29 +1,21 @@
 import React from "react";
+import "./contactItem.css"
 
 class ContactItem extends React.Component {
-    state = {
-        "Avatar": this.props.Avatar,
-        "Name": this.props.Name,
-        "Created": this.props.Created,
-        "Role": this.props.Role,
-        "Status": this.props.Status,
-        "Email": this.props.Email,
-        "Gender": this.props.Gender
-    }
     render () {
-        console.log("contactItem PROPS =>", this.props)
-        const {Avatar, Name, Created, Role, Status, Email, Gender} = this.state;
+        const { onStatusChange } = this.props;
+        const {Avatar, Name, Created, Role, Status, Email, Gender} = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`;
-        let statusStyle = "badge bg-secondary";
-        if(Status === "Active"){
-            statusStyle = "badge bg-success"
-        }
-        else if(Status === "Banned"){
-            statusStyle = "badge bg-danger"
-        }
-        else if(Status === "Pending"){
-            statusStyle = "badge bg-warning"
-        }
+        let statusStyle = "badge bg-secondary status";
+        switch(Status) {
+            case 'Active': statusStyle = "badge bg-success status";
+            break;
+            case 'Banned': statusStyle = "badge bg-danger status";
+            break; 
+            case 'Pending': statusStyle = "badge bg-warning status";
+            break;
+          }          
+
         return (
             <tr>
                 <td>
@@ -35,7 +27,7 @@ class ContactItem extends React.Component {
                 {Created}
                 </td>
                 <td className="text-center">
-                    <span className={statusStyle}>{Status}</span>
+                    <span className={statusStyle} onClick={onStatusChange} >{Status}</span>
                 </td>
                 <td className="text-center">
                     <a className="email" href="#">{Email}</a>
