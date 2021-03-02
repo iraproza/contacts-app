@@ -68,7 +68,7 @@ class App extends Component {
     else if (newList[index].Status === "Pending"){
       newList[index].Status = "Banned"
     }
-    else if (newList[index].Status === "Banned"){
+    else{
       newList[index].Status = "Inactive"
     }
     this.setState(() => {
