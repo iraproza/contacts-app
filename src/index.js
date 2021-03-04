@@ -16,6 +16,7 @@ import Header from "./components/Header/header";
 import ContactList from "./components/ContactList/contactList";
 import Footer from "./components/Footer/footer";
 import AddContact from "./components/AddContact/addContact";
+import Error404 from "./components/Error404/error404";
 
 class App extends Component {
   state = {
@@ -95,10 +96,25 @@ class App extends Component {
       }
     })
   }
-
+  
   onAddContact = () => {
-    console.log(this)
-  }
+    let newContact = {
+      "Id": uuidv4(),
+      "Avatar": document.querySelector("input[name='avatar']").value,
+      "Name": document.querySelector("input[name='name']").value,
+      "Created": document.querySelector("input[name='created']").value,
+      "Role": document.querySelector("input[name='role']").value,
+      "Status": document.querySelector("input[name='status']").value,
+      "Email": document.querySelector("input[name='email']").value,
+      "Gender": document.querySelector("input[name='gender']").value
+  } 
+  let newList = [...this.state.List, newContact]
+  this.setState(() => {
+    return {
+      List: newList
+    }
+  })
+}
 
   render(){
     const { List } = this.state;
@@ -108,7 +124,8 @@ class App extends Component {
         <Header />
           <Switch>
             <Route path = "/" exact render= {() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete = {this.onDelete} />}></Route>
-            <Route path = "/add-contact" exact render= {() => <AddContact List={List}/>}></Route>
+            <Route path = "/add-contact" exact render= {() => <AddContact onAddContact={this.onAddContact}/>}></Route>
+            <Route path="" component={Error404} />
           </Switch>
           <Footer />
         </Router>
