@@ -21,7 +21,7 @@ const AddContact = ({onAddContact}) =>{
                         <input className="col-7 col-md-7 col-lg-7" type="email" id="email" name="email" placeholder="Email..."></input>
                         <label className="col-7 col-md-7 col-lg-7" htmlFor="avatar">Avatar</label>
                         <input className="col-7 col-md-7 col-lg-7" type="number" id="avatar" name="avatar" placeholder="Avatar..."></input>
-                        <Link to="/" className="col-7 col-md-7 col-lg-7" onClick = {onAddContact}> Add contact </Link>
+                        <Link to="/" className="col-7 col-md-7 col-lg-7 btn btn-outline-dark" onClick = {onAddContact}> Add contact </Link>
                     </form>
             </div>
         </Fragment>
