@@ -1,9 +1,10 @@
 import React from "react";
-import "./contactItem.css"
+import "./contactItem.css";
+import {Link} from "react-router-dom";
 
 class ContactItem extends React.Component {
     render () {
-        const { onStatusChange, onDelete } = this.props;
+        const { onStatusChange, onDelete, onEditClick } = this.props;
         const {Avatar, Name, Created, Role, Status, Email, Gender} = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`;
         let statusStyle = "badge bg-secondary status";
@@ -40,12 +41,12 @@ class ContactItem extends React.Component {
                             <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a href="/#" className="table-link">
+                    <Link to="/edit-contact" className="table-link" onClick={onEditClick}>
                         <span className="fa-stack">
                             <i className="fa fa-square fa-stack-2x"></i>
                             <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
-                    </a>
+                    </Link>
                     <a href="/#" className="table-link danger" onClick={onDelete}>
                         <span className="fa-stack">
                             <i className="fa fa-square fa-stack-2x"></i>

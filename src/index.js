@@ -62,7 +62,8 @@ class App extends Component {
         "Email": "samwww@gmail.com",
         "Gender": "men"
       }
-    ]
+    ],
+    currentContact: null
   }
 
   onDelete = (Id) => {
@@ -75,11 +76,23 @@ class App extends Component {
       }
     })
   }
-  onEditContact = (Id) => {
-    const index = this.state.List.findIndex((elem) => elem.Id === Id);
-    
-    let currentContact = this.state.List[index];
-    
+
+  onEditClick = (Id) => {
+    const editContact = this.state.List.find((elem) => elem.Id === Id);
+    this.setState(() => {
+      return {
+        currentContact: editContact
+      }
+    })
+  }
+
+  onEditContact = (contact) =>{
+    const newList = this.state.List.map((item) => item.Id === contact.Id ? contact : item)
+    this.setState(()=>{
+      return{
+        List: newList
+      }
+    })
   }
 
   onStatusChange = (Id) =>{
@@ -116,15 +129,15 @@ class App extends Component {
 }
 
   render(){
-    const { List } = this.state;
+    const { List, currentContact } = this.state;
     return(
       <Fragment>
         <Router>
         <Header />
           <Switch>
-            <Route path = "/" exact render= {() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete = {this.onDelete} onEditContact = {this.onEditContact} />}></Route>
+            <Route path = "/" exact render= {() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete = {this.onDelete} onEditClick = {this.onEditClick} />}></Route>
             <Route path = "/add-contact" exact render= {() => <AddContact onAddContact = {this.onAddContact}/>}></Route>
-            <Route path = "/edit-contact" exact render= {() => <EditContact List={List} onEditContact = {this.onEditContact}/>}></Route>
+            <Route path = "/edit-contact" exact render= {() => <EditContact List={List}  currentContact={currentContact} onEditClick = {this.onEditClick} onEditContact = {this.onEditContact}/>}></Route>
             <Route path="" component={Error404} />
           </Switch>
           <Footer />
