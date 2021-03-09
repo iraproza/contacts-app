@@ -1,68 +1,9 @@
 import React, {Fragment} from "react";
-import { v4 as uuidv4 } from 'uuid';
 import {Redirect} from "react-router-dom";
 
-class AddContact extends React.Component{
-    state = {
-        "Avatar": 1,
-        "Name": "",
-        "Created": "",
-        "Role": "",
-        "Status": "",
-        "Email": "",
-        "Gender": "women",
-        "isRedirect": false
-    }
-
-    getName = (event) => {
-        this.setState({
-            Name: event.target.value
-        })
-    }
-    getAvatar = (event) => {
-        this.setState({
-            Avatar: event.target.value
-        })
-    }
-    getEmail = (event) => {
-        this.setState({
-            Email: event.target.value
-        })
-    }
-
-    getRole = (event) => {
-        this.setState({
-            Role: event.target.value
-        })
-    }
-
-    getStatus = (event) => {
-        this.setState({
-            Status: event.target.value
-        })
-    }
-
-    addNewContact = (event) =>{
-        event.preventDefault();
-        const {Avatar, Name, Email, Status, Role, Gender} =  this.state;
-        let Created = Date.now();
-        const Id = uuidv4();
-        const newContact = { Id, Avatar, Name, Created, Status, Role, Gender, Email};
-        const {onAddContact} = this.props;
-        onAddContact(newContact);
-        this.setState({
-            isRedirect: true
-        })
-    }
- 
+class EditContact extends React.Component{
+    
     render() {
-        const {Name, Gender, Avatar, isRedirect} = this.state;
-        if(isRedirect){
-            return(
-                <Redirect to = "/"/>
-            )
-        }
-        const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`;
         return(
             <Fragment>
                 <div className="container search-container">
@@ -74,9 +15,9 @@ class AddContact extends React.Component{
                                             <div className="panel-body text-center">
                                                 <div className="pv-lg"><img
                                                     className="center-block img-responsive img-circle img-thumbnail thumb96"
-                                                    src={URL} alt="Contact" />
+                                                     alt="Contact" />
                                                 </div>
-                                                <h3 className="m0 text-bold">{Name.length>0?Name:"User Name"}</h3>
+                                                <h3 className="m0 text-bold"></h3>
                                                 <div>
                                                     <p>Role <span></span> </p> 
                                                 </div>
@@ -107,4 +48,4 @@ class AddContact extends React.Component{
     }
 }
 
-export default AddContact;
+export default EditContact;
