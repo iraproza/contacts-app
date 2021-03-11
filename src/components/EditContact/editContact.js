@@ -1,5 +1,6 @@
 import React, {Fragment} from "react";
 import {Redirect} from "react-router-dom";
+import "./editContact.css";
 
 class EditContact extends React.Component{
     state = {
@@ -41,6 +42,7 @@ class EditContact extends React.Component{
             Status: event.target.value
         })
     }
+    
     editContact = (event) =>{
         event.preventDefault();
         const {Avatar, Name, Email, Status, Role, Gender, Created, Id} =  this.state;
@@ -51,7 +53,6 @@ class EditContact extends React.Component{
             isRedirect: true
         })
     }
-
 
     render() {
         const {Name, Avatar, Role, Status, Email, Gender, isRedirect} = this.state; 
@@ -76,7 +77,10 @@ class EditContact extends React.Component{
                                                 </div>
                                                 <h3 className="m0 text-bold">{Name}</h3>
                                                 <div>
-                                                    <p>Role <span></span> </p> 
+                                                    <p className="key">Gender: <span>{Gender}</span></p> 
+                                                    <p className="key">Role: <span>{Role}</span></p> 
+                                                    <p className="key">Status: <span>{Status}</span></p> 
+                                                    <p className="key">Email: <span>{Email}</span></p> 
                                                 </div>
                                             </div>
                                         </div>

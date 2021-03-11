@@ -45,7 +45,7 @@ class AddContact extends React.Component{
     addNewContact = (event) =>{
         event.preventDefault();
         const {Avatar, Name, Email, Status, Role, Gender} =  this.state;
-        let Created = Date.now();
+        let Created = ( new Date() ).toLocaleDateString().split("/");
         const Id = uuidv4();
         const newContact = { Id, Avatar, Name, Created, Status, Role, Gender, Email};
         const {onAddContact} = this.props;
@@ -56,7 +56,7 @@ class AddContact extends React.Component{
     }
  
     render() {
-        const {Name, Gender, Avatar, isRedirect} = this.state;
+        const {Name, Gender, Role, Status, Email, Avatar, isRedirect} = this.state;
         if(isRedirect){
             return(
                 <Redirect to = "/"/>
@@ -78,7 +78,10 @@ class AddContact extends React.Component{
                                                 </div>
                                                 <h3 className="m0 text-bold">{Name.length>0?Name:"User Name"}</h3>
                                                 <div>
-                                                    <p>Role <span></span> </p> 
+                                                    <p>Gender: <span>{Gender}</span></p> 
+                                                    <p>Role: <span>{Role}</span></p> 
+                                                    <p>Status: <span>{Status}</span></p> 
+                                                    <p>Email: <span>{Email}</span></p> 
                                                 </div>
                                             </div>
                                         </div>
