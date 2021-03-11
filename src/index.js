@@ -8,8 +8,7 @@ import {
   Route
 } from "react-router-dom"
 import "./index.css";
-// Import uuid
-import { v4 as uuidv4 } from 'uuid';
+
 
 // Components
 import Header from "./components/Header/header";
@@ -20,50 +19,82 @@ import EditContact from "./components/EditContact/editContact";
 import Error404 from "./components/Error404/error404";
 
 class App extends Component {
+  URL = "https://contact-3290a-default-rtdb.firebaseio.com/List.json"
   state = {
-    List: [
-      {
-        "Id": uuidv4(),
-        "Avatar": "47",
-        "Name": "Mila Kunis",
-        "Created": "08/08/2013",
-        "Role": "Admin",
-        "Status": "Active",
-        "Email": "mila@kunis.com",
-        "Gender": "women"
-      },
-      {
-        "Id": uuidv4(),
-        "Avatar": "50",
-        "Name": "Camil Jonson",
-        "Created": "08/08/2013",
-        "Role": "User",
-        "Status": "Inactive",
-        "Email": "camil@gmail.com",
-        "Gender": "men"
-      },
-      {
-        "Id": uuidv4(),
-        "Avatar": "46",
-        "Name": "Sara Jeckson",
-        "Created": "11/08/2014",
-        "Role": "Moderatot",
-        "Status": "Banned",
-        "Email": "jackson@kunis.com",
-        "Gender": "women"
-      },
-      {
-        "Id": uuidv4(),
-        "Avatar": "33",
-        "Name": "Sam Watson",
-        "Created": "04/09/2017",
-        "Role": "User",
-        "Status": "Pending",
-        "Email": "samwww@gmail.com",
-        "Gender": "men"
-      }
-    ],
+    // List: [
+    //   {
+    //     "Id": uuidv4(),
+    //     "Avatar": "47",
+    //     "Name": "Mila Kunis",
+    //     "Created": "08/08/2013",
+    //     "Role": "Admin",
+    //     "Status": "Active",
+    //     "Email": "mila@kunis.com",
+    //     "Gender": "women"
+    //   },
+    //   {
+    //     "Id": uuidv4(),
+    //     "Avatar": "50",
+    //     "Name": "Camil Jonson",
+    //     "Created": "08/08/2013",
+    //     "Role": "User",
+    //     "Status": "Inactive",
+    //     "Email": "camil@gmail.com",
+    //     "Gender": "men"
+    //   },
+    //   {
+    //     "Id": uuidv4(),
+    //     "Avatar": "46",
+    //     "Name": "Sara Jeckson",
+    //     "Created": "11/08/2014",
+    //     "Role": "Moderatot",
+    //     "Status": "Banned",
+    //     "Email": "jackson@kunis.com",
+    //     "Gender": "women"
+    //   },
+    //   {
+    //     "Id": uuidv4(),
+    //     "Avatar": "33",
+    //     "Name": "Sam Watson",
+    //     "Created": "04/09/2017",
+    //     "Role": "User",
+    //     "Status": "Pending",
+    //     "Email": "samwww@gmail.com",
+    //     "Gender": "men"
+    //   }
+    // ],
+    List: [],
     currentContact: null
+  }
+
+  componentDidMount(){
+    this.updateDatabase();
+  }
+
+updateDatabase = () => {
+  fetch(this.URL)
+    .then(response => {
+      return response.json();
+    }).then(date => {
+      if(date !== null){
+        this.setState(() =>{
+          return{
+            List: date
+          }
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
+  saveData = (contactList) => {
+    fetch(URL, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify
+    })
   }
 
   onDelete = (Id) => {
