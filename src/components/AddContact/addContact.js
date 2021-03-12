@@ -45,7 +45,7 @@ class AddContact extends React.Component{
     addNewContact = (event) =>{
         event.preventDefault();
         const {Avatar, Name, Email, Status, Role, Gender} =  this.state;
-        let Created = ( new Date() ).toLocaleDateString().split("/");
+        const Created = (new Date()).toLocaleDateString();
         const Id = uuidv4();
         const newContact = { Id, Avatar, Name, Created, Status, Role, Gender, Email};
         const {onAddContact} = this.props;

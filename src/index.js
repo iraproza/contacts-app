@@ -19,50 +19,8 @@ import EditContact from "./components/EditContact/editContact";
 import Error404 from "./components/Error404/error404";
 
 class App extends Component {
-  URL = "https://contact-3290a-default-rtdb.firebaseio.com/List.json"
+  URL = "https://contacts-213d4-default-rtdb.firebaseio.com/List.json"
   state = {
-    // List: [
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "47",
-    //     "Name": "Mila Kunis",
-    //     "Created": "08/08/2013",
-    //     "Role": "Admin",
-    //     "Status": "Active",
-    //     "Email": "mila@kunis.com",
-    //     "Gender": "women"
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "50",
-    //     "Name": "Camil Jonson",
-    //     "Created": "08/08/2013",
-    //     "Role": "User",
-    //     "Status": "Inactive",
-    //     "Email": "camil@gmail.com",
-    //     "Gender": "men"
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "46",
-    //     "Name": "Sara Jeckson",
-    //     "Created": "11/08/2014",
-    //     "Role": "Moderatot",
-    //     "Status": "Banned",
-    //     "Email": "jackson@kunis.com",
-    //     "Gender": "women"
-    //   },
-    //   {
-    //     "Id": uuidv4(),
-    //     "Avatar": "33",
-    //     "Name": "Sam Watson",
-    //     "Created": "04/09/2017",
-    //     "Role": "User",
-    //     "Status": "Pending",
-    //     "Email": "samwww@gmail.com",
-    //     "Gender": "men"
-    //   }
-    // ],
     List: [],
     currentContact: null
   }
@@ -71,31 +29,34 @@ class App extends Component {
     this.updateDatabase();
   }
 
-updateDatabase = () => {
-  fetch(this.URL)
-    .then(response => {
-      return response.json();
-    }).then(date => {
-      if(date !== null){
-        this.setState(() =>{
-          return{
-            List: date
-          }
-        })
-      }
-    })
-    .catch(err => console.log(err))
-  }
+  updateDatabase = () => {
+    fetch(this.URL)
+      .then(response => {
+        return response.json();
+      }).then(date => {
+        if(date !== null){
+          this.setState(() =>{
+            return{
+              List: date
+            }
+          })
+        }
+      })
+      .catch(err => console.log(err))
+    }
 
   saveData = (contactList) => {
-    fetch(URL, {
+    fetch(this.URL, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify
-    })
+      body: JSON.stringify(contactList),
+    }).then(response => {
+      console.log("saveDate", response)
+    }).catch(err => console.log(err));
   }
+
 
   onDelete = (Id) => {
     const index = this.state.List.findIndex((elem) => elem.Id === Id);
@@ -106,6 +67,9 @@ updateDatabase = () => {
         List: newList1
       }
     })
+
+    this.saveData(newList1)
+
   }
 
   onEditClick = (Id) => {
@@ -124,6 +88,8 @@ updateDatabase = () => {
         List: newList
       }
     })
+
+    this.saveData(newList)
   }
 
   onStatusChange = (Id) =>{
@@ -146,17 +112,20 @@ updateDatabase = () => {
         List: newList
       }
     })
+
+    this.saveData(newList)
   }
   
   onAddContact = (newContact) => {
     const tmpList = this.state.List.slice();
     const newList = [...tmpList, newContact]
-    console.log(newList)
     this.setState(()=>{
       return{
         List: newList
       }
     })
+
+    this.saveData(newList)
 }
 
   render(){

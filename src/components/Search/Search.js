@@ -17,9 +17,6 @@ const Search = () =>{
                                 <div className="col search-input-box">
                                     <input className="search-input form-control form-control-lg form-control-borderless" type="search" placeholder="Search contact"/>
                                 </div>
-                                <div className="col-auto">
-                                    <button className="btn-search btn btn-lg btn-primary" type="submit">Search</button>
-                                </div>
                             </div>
                         </form>
                     </div>
