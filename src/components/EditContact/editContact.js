@@ -36,6 +36,11 @@ class EditContact extends React.Component{
             Role: event.target.value
         })
     }
+    getGender = (event) => {
+        this.setState({
+            Gender: event.target.value
+        })
+    }
 
     getStatus = (event) => {
         this.setState({
@@ -85,15 +90,24 @@ class EditContact extends React.Component{
                                             </div>
                                         </div>
                                     </div>
-                                    <form onSubmit = {this.editContact} className="new-contact  justify-content-center col-8">
+                                    <form onSubmit = {this.editContact} className="new-contact justify-content-center align-items-center d-flex flex-column col-8">
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="name">Name</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="text" id="name" name="name" placeholder="Your name.." onChange = {this.getName} value={Name}></input>
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="role">Role</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="text" id="role" name="role" placeholder="Role..." onChange = {this.getRole} value={Role}></input>
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="status">Status</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="text" id="status" name="status" placeholder="Status..." onChange = {this.getStatus} value={Status}></input>
-                                        <label className="col-7 col-md-7 col-lg-7" htmlFor="gender">Gender</label>
-                                        <input className="col-7 col-md-7 col-lg-7" type="text" id="gender" name="gender" placeholder="Gender..."  value={Gender}></input>
+                                        <div className="col-7 col-md-7 col-lg-7 gender-label">
+                                            <label htmlFor="gender">Gender: </label>
+                                            <label>
+                                                <input  type="radio" name="gender" value="men" onChange = {this.getGender}></input>
+                                            man
+                                            </label>
+                                            <label >
+                                                <input type="radio" name="gender" value="women" onChange = {this.getGender}></input>
+                                            woman
+                                            </label>  
+                                        </div>
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="email">Email</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="email" id="email" name="email" placeholder="Email..." onChange = {this.getEmail} value={Email}></input>
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="avatar">Avatar</label>

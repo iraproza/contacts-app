@@ -26,7 +26,7 @@ const ContactList = ({List, onStatusChange, onDelete, onEditClick}) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {item.length > 0 ? item : <h2>Contact List is empty</h2>}
+                                        {item.length > 0 ? item : <tr><td><h2>Contact List is empty</h2></td></tr>}
                                     </tbody>
                                 </table> 
                             </div>

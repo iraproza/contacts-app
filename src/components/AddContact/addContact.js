@@ -42,6 +42,12 @@ class AddContact extends React.Component{
         })
     }
 
+    getGender = (event) => {
+        this.setState({
+            Gender: event.target.value
+        })
+    }
+
     addNewContact = (event) =>{
         event.preventDefault();
         const {Avatar, Name, Email, Status, Role, Gender} =  this.state;
@@ -89,8 +95,17 @@ class AddContact extends React.Component{
                                     <form onSubmit = {this.addNewContact} className="new-contact  justify-content-center col-8">
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="name">Name</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="text" id="name" name="name" placeholder="Your name.." onChange = {this.getName}></input>
-                                        <label className="col-7 col-md-7 col-lg-7" htmlFor="gender">Gender</label>
-                                        <input className="col-7 col-md-7 col-lg-7" type="text" id="gender" name="gender" placeholder="Gender..." ></input>
+                                        <div className="col-7 col-md-7 col-lg-7 gender-label">
+                                            <label  htmlFor="gender">Gender: </label>
+                                            <label>
+                                                <input  type="radio" name="gender" value="men" onChange = {this.getGender}></input>
+                                            man
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="gender" value="women" onChange = {this.getGender}></input>
+                                            woman
+                                            </label>  
+                                        </div>                                      
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="role">Role</label>
                                         <input className="col-7 col-md-7 col-lg-7" type="text" id="role" name="role" placeholder="Role..." onChange = {this.getRole}></input>
                                         <label className="col-7 col-md-7 col-lg-7" htmlFor="status">Status</label>
