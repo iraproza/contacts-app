@@ -22,7 +22,9 @@ class App extends Component {
   URL = "https://contacts-213d4-default-rtdb.firebaseio.com/List.json"
   state = {
     List: [],
-    currentContact: null
+    currentContact: null,
+    searchList: [],
+    valueSearch: ''
   }
 
   componentDidMount(){
@@ -69,7 +71,6 @@ class App extends Component {
     })
 
     this.saveData(newList1)
-
   }
 
   onEditClick = (Id) => {
@@ -127,15 +128,37 @@ class App extends Component {
 
     this.saveData(newList)
 }
+  onSearchContact = (valueSearch) => {
+    const newList = this.state.List.slice();
+    const searchContactList = [];
+    for(let i = 0; i < newList.length; i++){
+      if(newList[i].Name.toLowerCase().includes(valueSearch)){
+        searchContactList.push(newList[i]);
+      }
+    }
+    this.setState(() => {
+      return {
+        searchList: searchContactList
+      }
+    })
+  }
+
+  onSearchValue = (searchTarget) => {
+    this.setState(() => {
+      return {
+        valueSearch: searchTarget
+      }
+    })
+  }
 
   render(){
-    const { List, currentContact } = this.state;
+    const { List, searchList, currentContact, valueSearch } = this.state;
     return(
       <Fragment>
         <Router>
-        <Header />
+        <Header onSearchContact={this.onSearchContact} onSearchValue = {this.onSearchValue} />
           <Switch>
-            <Route path = "/" exact render= {() => <ContactList List={List} onStatusChange={this.onStatusChange} onDelete = {this.onDelete} onEditClick = {this.onEditClick} />}></Route>
+            <Route path = "/" exact render= {() => <ContactList List={valueSearch===''?List:searchList.length>0?searchList:searchList} onStatusChange={this.onStatusChange} onDelete = {this.onDelete} onEditClick = {this.onEditClick} />}></Route>
             <Route path = "/add-contact" exact render= {() => <AddContact onAddContact = {this.onAddContact}/>}></Route>
             <Route path = "/edit-contact" exact render= {() => <EditContact List={List}  currentContact={currentContact} onEditClick = {this.onEditClick} onEditContact = {this.onEditContact}/>}></Route>
             <Route path="" component={Error404} />

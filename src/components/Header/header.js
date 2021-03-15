@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./header.css";
 import Search from "../../components/Search/search";
 
-const Header = () =>{
+const Header = ({onSearchContact, onSearchValue}) =>{
     return(
         <Fragment>
             <div className="container">
@@ -24,7 +24,7 @@ const Header = () =>{
                     </div>
                 </div>
             </div>
-            <Search/>
+            <Search onSearchContact = {onSearchContact} onSearchValue = {onSearchValue}/>
         </Fragment>
     )
 }
