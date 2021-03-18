@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 import "./header.css";
-import Search from "../../components/Search/search";
+import Search from "../../Components/Search/search";
 
 const Header = ({onSearchContact, onSearchValue}) =>{
     return(
