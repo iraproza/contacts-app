@@ -1,0 +1,51 @@
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, 
+.form-control-borderless:active, 
+.form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.card{
+    border: none;
+}
+
+.card-body{
+    background-color: #49746e;
+}
+
+.card-body i{
+    color: #dfddde;
+    font-size: 25px;
+}
+.search-input-box{
+    margin-left: 15px;
+}
+
+.search-input,
+.btn-search{
+    font-size: 18px;
+}
+
+.btn-search{
+    background-color: #9b4324;
+    border: #9b4324;
+    margin-left: 15px;
+}
+
+.btn-search:hover,
+.btn-search:focus{
+    background-color: #9b442481!important;
+    border-color: #9b4324!important;
+    box-shadow: none!important;
+}
+
+.btn-search:active{
+    background-color: #9b4424be !important;
+    box-shadow: none!important;
+
+}

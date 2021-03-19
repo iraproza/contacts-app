@@ -1,0 +1,48 @@
+.key{
+    font-weight: 700;
+}
+
+.key span{
+    font-weight: normal;
+}
+
+label{
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+input{
+    margin-bottom: 10px;
+    line-height: 35px;
+    border: grey solid 2px;
+    outline: #9b4324;
+    border-radius: 5px;
+}
+
+input:focus{
+    border: #9b4324 solid 2px;
+}
+
+.gender-label{
+    display: flex;
+    justify-content: space-between;
+}
+
+.gender-label>label>input{
+   margin-right: 15px;
+   font-weight: 400;
+}
+.gender-label>label:nth-child(2),
+.gender-label>label:nth-child(3){
+    font-weight: 400;
+}
+
+ button{
+    background-color: #9b4324;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    line-height: 40px;
+    margin-top: 20px;
+}
