@@ -163,7 +163,7 @@ class App extends Component {
             <Route path = "/edit-contact" exact component= { EditContact }></Route>
             <Route path="" exact component={Error404} />
           </Switch>
-          <Footer />
+          <Footer/>
         </Router>
       </Provider>
     )

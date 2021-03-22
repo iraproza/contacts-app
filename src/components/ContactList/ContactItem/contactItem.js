@@ -3,23 +3,24 @@ import "./contactItem.css";
 import {Link} from "react-router-dom";
 import {Redirect} from "react-router-dom";
 import {saveData} from "../../../Services/api-service";
+import { deleteContact } from "../../../Actions/ContactListActions";
 import { connect } from "react-redux";
 
 class ContactItem extends React.Component {
-    deleteContact = (Id) => {
-        console.log( )
-    const index = this.props.Id;
-    console.log(this.props.Id)
-    let newList1 = this.state.List.slice();
-    newList1.splice([index],1);
-    this.setState(() => {
-      return {
-        List: newList1
-      }
-    })
-
-    this.saveData(newList1)
-  }
+    onDeleteContact = () => {
+        const { List, deleteContact } = this.props;
+        const contact = this.props;
+        const newList = List.filter((contact_item) => {
+            return contact_item.Id !== contact.Id;
+        });
+        deleteContact(newList);
+        saveData(newList).then(() => {
+            this.setState({
+                List: newList,
+                isRedirect: true
+            })
+        }) 
+    }
 
     render () {
         const { onStatusChange, onEditClick } = this.props;
@@ -65,7 +66,7 @@ class ContactItem extends React.Component {
                             <i className="fa fa-pencil fa-stack-1x fa-inverse"></i>
                         </span>
                     </Link>
-                    <a href="/#" className="table-link danger" onClick={this.deleteContact}>
+                    <a href="/#" className="table-link danger" onClick={this.onDeleteContact}>
                         <span className="fa-stack">
                             <i className="fa fa-square fa-stack-2x"></i>
                             <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
@@ -82,4 +83,8 @@ const mapStateToProps  = ({ ContactListReducer }) => {
     return { List }
 }
 
-export default connect(mapStateToProps)(ContactItem);
+const mapDispatchToProps = {
+    deleteContact
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);

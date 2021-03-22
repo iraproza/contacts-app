@@ -7,7 +7,7 @@ export const getAllContacts = (contactList) => {
 
 export const addNewContact = (contactList) => {
     return {
-        type: "ADD_NEW__CONTACT",
+        type: "ADD_NEW_CONTACT",
         payload: contactList
     }
 }

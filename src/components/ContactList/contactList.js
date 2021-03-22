@@ -10,7 +10,7 @@ const ContactList = ({List, getAllContacts}) => {
         updateDatabase().then(data => {
             getAllContacts(data)
         })
-    })
+    }, [])
     
     const item = List.map(contact => {
         return (

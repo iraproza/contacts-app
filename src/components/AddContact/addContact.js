@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {Redirect} from "react-router-dom";
 import {saveData} from "../../Services/api-service";
 import { connect } from "react-redux";
+import { addNewContact } from "../../Actions/ContactListActions";
 
 class AddContact extends React.Component{
     state = {
@@ -56,12 +57,14 @@ class AddContact extends React.Component{
         const Created = (new Date()).toLocaleDateString();
         const Id = uuidv4();
         const newContact = { Id, Avatar, Name, Created, Status, Role, Gender, Email};
-        const { List } = this.props;
+        const { List, addNewContact } = this.props;
+        addNewContact(newContact);
         List.push(newContact);
-        saveData(List);
-        this.setState({
-            isRedirect: true
-        })
+        saveData(List).then(() => {
+            this.setState({
+                isRedirect: true
+            })
+        }) 
     }
  
     render() {
@@ -132,4 +135,8 @@ const mapStateToProps  = ({ ContactListReducer }) => {
     return { List }
 }
 
-export default connect(mapStateToProps)(AddContact);
+const mapDispatchToProps = {
+    addNewContact
+}
+
+export default connect(mapStateToProps, mapDispatchToProps )(AddContact);

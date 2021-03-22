@@ -17,7 +17,7 @@ export const updateDatabase = () => {
     return data;
 } 
 
-export const  saveData = (contactList) => {
+export const saveData = (contactList) => {
     const response = fetch(URL, {
       method: "PUT",
       headers: {
