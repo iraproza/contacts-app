@@ -91,41 +91,6 @@ class App extends Component {
 //     this.saveData(newList)
 //   }
 
-//   onStatusChange = (Id) =>{
-//     const index = this.state.List.findIndex((elem) => elem.Id === Id);
-//     let newList = this.state.List.slice();
-//     if (newList[index].Status === "Inactive"){
-//       newList[index].Status = "Active"
-//     }
-//     else if (newList[index].Status === "Active"){
-//       newList[index].Status = "Pending"
-//     }
-//     else if (newList[index].Status === "Pending"){
-//       newList[index].Status = "Banned"
-//     }
-//     else{
-//       newList[index].Status = "Inactive"
-//     }
-//     this.setState(() => {
-//       return {
-//         List: newList
-//       }
-//     })
-
-//     this.saveData(newList)
-//   }
-  
-//   onAddContact = (newContact) => {
-//     const tmpList = this.state.List.slice();
-//     const newList = [...tmpList, newContact]
-//     this.setState(()=>{
-//       return{
-//         List: newList
-//       }
-//     })
-
-//     this.saveData(newList)
-// }
 //   onSearchContact = (valueSearch) => {
 //     const newList = this.state.List.slice();
 //     const searchContactList = [];

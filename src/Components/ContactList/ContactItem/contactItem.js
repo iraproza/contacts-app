@@ -49,32 +49,6 @@ class ContactItem extends React.Component {
         }) 
     }
 
-
-
-    //   onStatusChange = (Id) =>{
-//     const index = this.state.List.findIndex((elem) => elem.Id === Id);
-//     let newList = this.state.List.slice();
-//     if (newList[index].Status === "Inactive"){
-//       newList[index].Status = "Active"
-//     }
-//     else if (newList[index].Status === "Active"){
-//       newList[index].Status = "Pending"
-//     }
-//     else if (newList[index].Status === "Pending"){
-//       newList[index].Status = "Banned"
-//     }
-//     else{
-//       newList[index].Status = "Inactive"
-//     }
-//     this.setState(() => {
-//       return {
-//         List: newList
-//       }
-//     })
-
-//     this.saveData(newList)
-//   }
-
     render () {
         const { onEditClick } = this.props;
         const {Avatar, Name, Created, Role, Status, Email, Gender} = this.props;
