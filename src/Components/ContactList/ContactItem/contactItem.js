@@ -7,7 +7,7 @@ import { deleteContact, updateStatus } from "../../../Actions/ContactListActions
 import { connect } from "react-redux";
 
 class ContactItem extends React.Component {
-    
+
     onDeleteContact = () => {
         const { List, deleteContact } = this.props;
         const contact = this.props;
@@ -23,29 +23,31 @@ class ContactItem extends React.Component {
         }) 
     }
 
-    // onStatusChange = () =>{
-    //     const contact = {...this.props};
-    //     const { List, updateStatus } = this.props;
-    //     const newList = List.slice();
-    //     if (contact.Status === "Inactive"){
-    //         contact.Status = "Active"
-    //     }
-    //     else if (contact.Status === "Active"){
-    //         contact.Status = "Pending"
-    //     }
-    //     else if (contact.Status === "Pending"){
-    //         contact.Status = "Banned"
-    //     }
-    //     else{
-    //         contact.Status = "Inactive"
-    //     }
-    //     updateStatus(newList);
-    //     saveData(newList).then(() => {
-    //         this.setState({
-    //             List: newList
-    //         })
-    //     }) 
-    // }
+    onStatusChange = () =>{
+        const contact = {...this.props};
+        const { List, updateStatus } = this.props;
+        const newList = List.slice();
+        const index = List.findIndex((elem) => elem.Id === contact.Id);
+
+        if (newList[index].Status === "Inactive"){
+            newList[index].Status = "Active"
+        }
+        else if (newList[index].Status === "Active"){
+            newList[index].Status = "Pending"
+        }
+        else if (contact.Status === "Pending"){
+            newList[index].Status = "Banned"
+        }
+        else{
+            newList[index].Status = "Inactive"
+        }
+        updateStatus(newList);
+        saveData(newList).then(() => {
+            this.setState({
+                List: newList
+            })
+        }) 
+    }
 
 
 
