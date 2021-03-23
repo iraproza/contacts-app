@@ -3,10 +3,11 @@ import "./contactItem.css";
 import {Link} from "react-router-dom";
 import {Redirect} from "react-router-dom";
 import {saveData} from "../../../Services/api-service";
-import { deleteContact } from "../../../Actions/ContactListActions";
+import { deleteContact, updateStatus } from "../../../Actions/ContactListActions";
 import { connect } from "react-redux";
 
 class ContactItem extends React.Component {
+    
     onDeleteContact = () => {
         const { List, deleteContact } = this.props;
         const contact = this.props;
@@ -22,8 +23,58 @@ class ContactItem extends React.Component {
         }) 
     }
 
+    // onStatusChange = () =>{
+    //     const contact = {...this.props};
+    //     const { List, updateStatus } = this.props;
+    //     const newList = List.slice();
+    //     if (contact.Status === "Inactive"){
+    //         contact.Status = "Active"
+    //     }
+    //     else if (contact.Status === "Active"){
+    //         contact.Status = "Pending"
+    //     }
+    //     else if (contact.Status === "Pending"){
+    //         contact.Status = "Banned"
+    //     }
+    //     else{
+    //         contact.Status = "Inactive"
+    //     }
+    //     updateStatus(newList);
+    //     saveData(newList).then(() => {
+    //         this.setState({
+    //             List: newList
+    //         })
+    //     }) 
+    // }
+
+
+
+    //   onStatusChange = (Id) =>{
+//     const index = this.state.List.findIndex((elem) => elem.Id === Id);
+//     let newList = this.state.List.slice();
+//     if (newList[index].Status === "Inactive"){
+//       newList[index].Status = "Active"
+//     }
+//     else if (newList[index].Status === "Active"){
+//       newList[index].Status = "Pending"
+//     }
+//     else if (newList[index].Status === "Pending"){
+//       newList[index].Status = "Banned"
+//     }
+//     else{
+//       newList[index].Status = "Inactive"
+//     }
+//     this.setState(() => {
+//       return {
+//         List: newList
+//       }
+//     })
+
+//     this.saveData(newList)
+//   }
+
     render () {
-        const { onStatusChange, onEditClick } = this.props;
+        const { onEditClick } = this.props;
         const {Avatar, Name, Created, Role, Status, Email, Gender} = this.props;
         const URL = `https://randomuser.me/api/portraits/${Gender}/${Avatar}.jpg`;
         let statusStyle = "badge bg-secondary status";
@@ -48,7 +99,7 @@ class ContactItem extends React.Component {
                 {Created}
                 </td>
                 <td className="text-center">
-                    <span className={statusStyle} onClick={onStatusChange} >{Status}</span>
+                    <span className={statusStyle} onClick={this.onStatusChange} >{Status}</span>
                 </td>
                 <td className="text-center">
                     <a className="email" href="/#">{Email}</a>
@@ -84,7 +135,8 @@ const mapStateToProps  = ({ ContactListReducer }) => {
 }
 
 const mapDispatchToProps = {
-    deleteContact
+    deleteContact,
+    updateStatus
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactItem);

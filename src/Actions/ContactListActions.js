@@ -18,3 +18,10 @@ export const deleteContact = (contactList) => {
         payload: contactList
     }
 }
+
+export const updateStatus = (contactList) => {
+    return {
+        type: "UPDATE_STATUS",
+        payload: contactList
+    }
+}

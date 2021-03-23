@@ -16,10 +16,14 @@ const ContactListReducer = (state = initialState, action) => {
                 ]
             }
         case "DELETE_CONTACT":
-            console.log(action.payload)
             return{
                 List: action.payload
             }
+        case "UPDATE_STATUS":
+            return{
+                List: action.payload
+            }
+
         default:
             return state;
     }
