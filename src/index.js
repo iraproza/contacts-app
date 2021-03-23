@@ -29,48 +29,6 @@ class App extends Component {
   //   valueSearch: ''
   // }
 
-//   updateDatabase = () => {
-//     fetch(this.URL)
-//       .then(response => {
-//         return response.json();
-//       }).then(date => {
-//         if(date !== null){
-//           this.setState(() =>{
-//             return{
-//               List: date
-//             }
-//           })
-//         }
-//       })
-//       .catch(err => console.log(err))
-//     }
-
-//   saveData = (contactList) => {
-//     fetch(this.URL, {
-//       method: "PUT",
-//       headers: {
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(contactList),
-//     }).then(response => {
-//       console.log("saveDate", response)
-//     }).catch(err => console.log(err));
-//   }
-
-
-//   onDelete = (Id) => {
-//     const index = this.state.List.findIndex((elem) => elem.Id === Id);
-//     let newList1 = this.state.List.slice();
-//     newList1.splice([index],1);
-//     this.setState(() => {
-//       return {
-//         List: newList1
-//       }
-//     })
-
-//     this.saveData(newList1)
-//   }
-
 //   onEditClick = (Id) => {
 //     const editContact = this.state.List.find((elem) => elem.Id === Id);
 //     this.setState(() => {
@@ -91,20 +49,20 @@ class App extends Component {
 //     this.saveData(newList)
 //   }
 
-//   onSearchContact = (valueSearch) => {
-//     const newList = this.state.List.slice();
-//     const searchContactList = [];
-//     for(let i = 0; i < newList.length; i++){
-//       if(newList[i].Name.toLowerCase().includes(valueSearch)){
-//         searchContactList.push(newList[i]);
-//       }
-//     }
-//     this.setState(() => {
-//       return {
-//         searchList: searchContactList
-//       }
-//     })
-//   }
+  // onSearchContact = (valueSearch) => {
+  //   const newList = this.state.List.slice();
+  //   const searchContactList = [];
+  //   for(let i = 0; i < newList.length; i++){
+  //     if(newList[i].Name.toLowerCase().includes(valueSearch)){
+  //       searchContactList.push(newList[i]);
+  //     }
+  //   }
+  //   this.setState(() => {
+  //     return {
+  //       searchList: searchContactList
+  //     }
+  //   })
+  // }
 
 //   onSearchValue = (searchTarget) => {
 //     this.setState(() => {

@@ -25,3 +25,10 @@ export const updateStatus = (contactList) => {
         payload: contactList
     }
 }
+
+export const searchContact = (name) =>{
+    return{
+        type: "SEARCH_CONTACT",
+        payload: name
+    }
+}

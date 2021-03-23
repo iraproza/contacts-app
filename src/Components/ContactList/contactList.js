@@ -50,8 +50,8 @@ const ContactList = ({List, getAllContacts}) => {
 }
 
 const mapStateToProps = ({ ContactListReducer }) => {
-    const { List } = ContactListReducer;
-    return { List }
+    const { List, searchList } = ContactListReducer;
+    return { List, searchList }
 }
 const mapDispatchToProps = {
     getAllContacts
