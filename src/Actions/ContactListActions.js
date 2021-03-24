@@ -12,10 +12,10 @@ export const addNewContact = (contactList) => {
     }
 }
 
-export const deleteContact = (contactList) => {
+export const deleteContact = (Id) => {
     return {
         type: "DELETE_CONTACT",
-        payload: contactList
+        payload: Id
     }
 }
 

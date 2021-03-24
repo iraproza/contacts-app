@@ -14,7 +14,7 @@ class ContactItem extends React.Component {
         const newList = List.filter((contact_item) => {
             return contact_item.Id !== contact.Id;
         });
-        deleteContact(newList);
+        deleteContact(contact.Id);
         saveData(newList).then(() => {
             this.setState({
                 List: newList,

@@ -8,13 +8,7 @@ const Search= ({ searchContact }) => {
     const onSearch = (event) => {
         searchContact(event.target.value)
     }
-    
-    // getValueSearch = (event) =>{
-    //     const searchTarget = event.target.value;
-    //     const {onSearchContact, onSearchValue} = this.props;
-    //     onSearchValue(searchTarget);
-    //     onSearchContact(searchTarget);
-    // }
+
         return(   
             <Fragment>
                 <div className="container search-container">

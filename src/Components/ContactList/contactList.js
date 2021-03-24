@@ -4,21 +4,34 @@ import { connect } from "react-redux";
 import { updateDatabase } from "../../Services/api-service";
 import { getAllContacts } from "../../Actions/ContactListActions";
 
-const ContactList = ({List, getAllContacts}) => {
+const ContactList = ({List, searchList, valueSearch, getAllContacts}) => {
 
     useEffect(() => {
         updateDatabase().then(data => {
             getAllContacts(data)
         })
     }, [])
-    
-    const item = List.map(contact => {
-        return (
-            <ContactItem Id={contact.Id} key={contact.Id} Avatar = {contact.Avatar} Name = {contact.Name} Created = {contact.Created} Role = {contact.Role} Status = {contact.Status} Email = {contact.Email} Gender = {contact.Gender} 
-            />
-            //* onStatusChange ={() => onStatusChange(contact.Id)} onDelete = {() => onDelete (contact.Id)} onEditClick = {() => onEditClick (contact.Id)}
-        )
-    })
+
+    const renderList = () =>{
+        if(searchList.length === 0 && valueSearch.length === 0) {
+            return List.map(contact => {
+                return (
+                    <ContactItem key={contact.Id} {...contact} />
+                )
+            })
+        } 
+        else if (searchList.length > 0) {
+            return searchList.map(contact => {
+                return (
+                    <ContactItem key={contact.Id} {...contact} />
+                )
+            })
+        }
+        else if(searchList.length === 0 && valueSearch.length > 0 ){
+           return <tr><td><h2>Contacts not found</h2></td></tr>;
+        }
+    }
+
     return(
         <Fragment>
             <div className="container">
@@ -37,7 +50,7 @@ const ContactList = ({List, getAllContacts}) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {item.length > 0 ? item : <tr><td><h2>Contacts not found</h2></td></tr>}
+                                        {renderList()}
                                     </tbody>
                                 </table> 
                             </div>
@@ -50,8 +63,8 @@ const ContactList = ({List, getAllContacts}) => {
 }
 
 const mapStateToProps = ({ ContactListReducer }) => {
-    const { List, searchList } = ContactListReducer;
-    return { List, searchList }
+    const { List, searchList, valueSearch } = ContactListReducer;
+    return { List, searchList, valueSearch }
 }
 const mapDispatchToProps = {
     getAllContacts
